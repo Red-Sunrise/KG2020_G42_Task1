@@ -89,6 +89,8 @@ public class Home implements Drawable {
         drawWindow(graphics2D);
         drawRoof(graphics2D);
         drawDoor(graphics2D);
+        drawAddress(graphics2D);
+
     }
 
     private void drawWindow(Graphics2D graphics2D) {
@@ -99,6 +101,8 @@ public class Home implements Drawable {
         //правое
         graphics2D.fillRect(width / 4 + 5 * widthHome / 8, height / 2 + locationWindow, widthHome / 4, heightHome / 3);
         graphics2D.setColor(Color.BLACK);
+        graphics2D.drawRect(width / 4 + widthHome / 8, height / 2 + locationWindow, widthHome / 4, heightHome / 3);
+        graphics2D.drawRect(width / 4 + 5 * widthHome / 8, height / 2 + locationWindow, widthHome / 4, heightHome / 3);
         //левое окно вертикальная и горизонтальная линия
         graphics2D.drawLine(width / 4 + widthHome / 4, height / 2 + locationWindow, width / 4 + widthHome / 4, height / 2 + heightHome / 2 - indent);
         graphics2D.drawLine(width / 4 + widthHome / 8, height / 2 + 2 * locationWindow + indent, width / 4 + 3 * widthHome / 8, height / 2 + 2 * locationWindow + indent);
@@ -112,18 +116,19 @@ public class Home implements Drawable {
         int[] x = {width / 4, width / 4 + widthHome / 2, width / 4 + widthHome};
         int[] y = {height / 2, height / 2 - heightHome / 2, height / 2};
         int n = 3;
-        graphics2D.drawLine(x[0], y[0], x[1], y[1]);
-        graphics2D.drawLine(x[2], y[0], x[1], (y[1]));
         Polygon polygon = new Polygon(x, y, n);
         graphics2D.setColor(roof);
         graphics2D.fillPolygon(polygon);
         graphics2D.setColor(Color.BLACK);
+        graphics2D.drawLine(x[0], y[0], x[1], y[1]);
+        graphics2D.drawLine(x[2], y[0], x[1], (y[1]));
     }
 
     private void drawWall(Graphics2D graphics2D) {
         graphics2D.setColor(house);
         graphics2D.fillRect(width / 4, height / 2, widthHome, heightHome);
         graphics2D.setColor(Color.BLACK);
+        graphics2D.drawRect(width / 4, height / 2, widthHome, heightHome);
     }
 
     private void drawDoor(Graphics2D graphics2D) {
@@ -134,5 +139,21 @@ public class Home implements Drawable {
         graphics2D.fillOval(getWidth() / 2 - widthHome / 5, getHeight() / 2 + 3 * heightHome / 4, widthHome / 32, widthHome / 32);
 
         graphics2D.setColor(Color.BLACK);
+        graphics2D.drawRect(getWidth() / 4 + 3 * widthHome / 8, getHeight() / 2 + heightHome / 2, widthHome / 4, heightHome / 2);
+        graphics2D.drawOval(getWidth() / 2 - widthHome / 5, getHeight() / 2 + 3 * heightHome / 4, widthHome / 32, widthHome / 32);
+    }
+
+    private void drawAddress(Graphics2D g) {
+
+        g.setColor(new Color(98, 157, 217));
+        g.fillRect(getWidth() / 4 + 2 * widthHome / 11, getHeight() / 2 + heightHome / 2, (int) (widthHome / 5.3), heightHome / 8);
+
+        g.setColor(Color.BLACK);
+        g.setStroke(new BasicStroke((2)));
+        g.drawRect(getWidth() / 4 + 2 * widthHome / 11, getHeight() / 2 + heightHome / 2, (int) (widthHome / 5.4), heightHome / 8);
+
+        Font newFont = new Font("Times New Roman", Font.BOLD, (width / 100));
+        g.setFont(newFont);
+        g.drawString("Ул. Солнечная", getWidth() / 4 + 2*widthHome/11, getHeight() / 2 + (int) (heightHome * 0.6));
     }
 }

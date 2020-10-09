@@ -48,9 +48,9 @@ public class Cloud implements Drawable {
 
     @Override
     public void draw(Graphics2D graphics2D) {
-        graphics2D.setColor(Color.BLACK);
-        graphics2D.drawOval(x, y, width, height);
         graphics2D.setColor(Color.WHITE);
         graphics2D.fillOval(x, y, width, height);
+        graphics2D.setColor(Color.BLACK);
+        graphics2D.drawOval(x, y, width, height);
     }
 }

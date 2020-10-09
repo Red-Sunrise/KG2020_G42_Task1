@@ -77,6 +77,8 @@ public class Sun implements Drawable {
             dy2 = R * Math.sin(angle);
             graphics2D.setColor(Color.orange);
             graphics2D.drawLine((int) dx1 + x, (int) dy1 + y, (int) dx2 + x, (int) dy2 + y);
+            graphics2D.setColor(Color.BLACK);
+            graphics2D.drawOval(x - r, y - r, r + r, r + r);
         }
     }
 }
